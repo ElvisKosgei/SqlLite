@@ -1,8 +1,10 @@
 package com.example.sqllite
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -48,28 +50,39 @@ class MainActivity : AppCompatActivity() {
 
         // FETCHING THE DATA
         buttonShow.setOnClickListener {
-            val products = db.getProducts()//CURSOR
+            /*val products = db.getProducts()//CURSOR
             while (products!!.moveToNext()) {
-               /* COLUMNS
+               *//* COLUMNS
                 ID -> 0
                 Name -> 1
                 Price -> 2
-                Quantity -> 3*/
+                Quantity -> 3*//*
                 val id = products.getInt(0)
                 val name = products.getString(1)
                 val price = products.getString(2)
                 val quantity = products.getString(3)
-                //Log.d("PRODUCT", "$id: $name: $price: $quantity")
-                Toast.makeText(this, "$id: $name: $price: $quantity", Toast.LENGTH_SHORT).show()
+                Log.d("PRODUCT", "$id: $name: $price: $quantity")
+                //Toast.makeText(this, "$id: $name: $price: $quantity", Toast.LENGTH_SHORT).show()*/
+            val intent = Intent(this, DisplayActivity::class.java)
+            startActivity(intent)
 
             }
             db.close()
         }
 
-        // DELETING THE DATA
+       /* // DELETING THE DATA
         buttonDelete.setOnClickListener {
-            db.deleteProduct(1)
+            //db.deleteProduct(1)
+            //UPDATE
+            //db.updateProduct(3, "HP", 23000, 56)
+
+            //SEARCH
+            val result = db.searchProduct("HP")
+            val count = result!!.count
+            Log.d("PRODUCT", "Found $count products")
+
         }
+
         //FETCHING ONE PRODUCT
         buttonFetchOneProduct.setOnClickListener {
             val p = db.fetchOneProduct(2)
@@ -77,5 +90,8 @@ class MainActivity : AppCompatActivity() {
             val name = p.getString(1)
             Toast.makeText(this, name, Toast.LENGTH_SHORT).show()
         }
+
+        //Hiding buttons
+        buttonDelete.visibility = View.GONE
+*/
     }
-}

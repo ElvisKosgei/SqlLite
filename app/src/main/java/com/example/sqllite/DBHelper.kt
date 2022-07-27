@@ -86,24 +86,26 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         val db = this.readableDatabase
         return db.rawQuery(sql, null)
         // When fetching something from the database, use a readable database.
-        // For returning, you lose when you call the function.
+        // For returning, you close when you call the function.
 
     }
 
     fun updateProduct(id: Int, name: String, price: Int, quantity: Int) {
-        val sql = "UPDATE $TABLE_NAME SET $NAME_COl= $name, $PRICE_COL= $price , $QUANTITY_COL= $quantity"
-        val db = this.writableDatabase
-        db.rawQuery(sql, null)
-        db.close()
+      val contentValues = ContentValues()
+       contentValues.put(NAME_COl,name)
+       contentValues.put(PRICE_COL, price)
+       contentValues.put(QUANTITY_COL, quantity)
+       val db = this.writableDatabase
+       db.update(TABLE_NAME, contentValues, "$ID_COL = ?", arrayOf(id.toString()))
         // Since we are writing something into the database we use a writable database
 
     }
 
-    fun searchProduct(search: String) {
-        val sql = "SELECT * FROM $TABLE_NAME WHERE $NAME_COl LIKE %$search%"
+    fun searchProduct(search: String) : Cursor? {
+        val sql = "SELECT * FROM $TABLE_NAME WHERE $NAME_COl LIKE '%$search%'"
         val db = this.writableDatabase
-        db.rawQuery(sql, null)
-        db.close()
+        return  db.rawQuery(sql, null)
+
 
     }
 
