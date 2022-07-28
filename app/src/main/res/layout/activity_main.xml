@@ -13,8 +13,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Product Name"
-        android:inputType="textPersonName"
-        android:text="Product Name" />
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/inputQuantity"
@@ -22,8 +21,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Quantity"
-        android:inputType="numberSigned"
-        android:text="Product Quantity" />
+        android:inputType="numberSigned" />
 
     <EditText
         android:id="@+id/inputPrice"
@@ -31,8 +29,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Price"
-        android:inputType="numberSigned"
-        android:text="Product Price" />
+        android:inputType="numberSigned"/>
 
     <Button
         android:id="@+id/buttonSave"

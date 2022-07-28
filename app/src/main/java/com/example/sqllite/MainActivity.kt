@@ -21,6 +21,8 @@ class MainActivity : AppCompatActivity() {
         val buttonShow : Button = findViewById(R.id.buttonShow)
         val buttonDelete : Button = findViewById(R.id.buttonDelete)
         val buttonFetchOneProduct : Button = findViewById(R.id.buttonFetchOneProduct)
+        buttonDelete.visibility = View.GONE
+        buttonFetchOneProduct.visibility = View.GONE
 
         //initializing the database
         val db  = DBHelper(this, null)
@@ -89,9 +91,9 @@ class MainActivity : AppCompatActivity() {
             p!!.moveToFirst()
             val name = p.getString(1)
             Toast.makeText(this, name, Toast.LENGTH_SHORT).show()
-        }
+        }*/
 
         //Hiding buttons
-        buttonDelete.visibility = View.GONE
-*/
+        //buttonDelete.visibility = View.GONE
+
     }
